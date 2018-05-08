@@ -1,5 +1,7 @@
 package pl.mysior;
 
+import javax.xml.stream.events.EndDocument;
+import javax.xml.ws.Endpoint;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -9,6 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
         try {
+            Endpoint.publish("http://localhost:4321/workers", new AllWorkersImpl());
             int i = 1;
             int port = 1234;
             LoggingInterface logging = new LoggingInterfaceImpl(AuthType.LOCAL);

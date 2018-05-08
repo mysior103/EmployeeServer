@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Dealer extends Worker implements Serializable{
-    @XmlTransient
+
     private BigDecimal commission;
     private BigDecimal maxCommission;
 

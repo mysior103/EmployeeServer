@@ -80,5 +80,5 @@ public class LoggingInterfaceImpl extends UnicastRemoteObject implements Logging
     }
 }
 enum AuthType{
-    ZUT,LOCAL;
+    ZUT,LOCAL
 }
