@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class Worker implements Serializable {
-    private static final Long MIN_ID = new Long("10000000000");
-    private static final Long MAX_ID = new Long("99999999999");
+    public static final Long MIN_ID = new Long("10000000000");
+    public static final Long MAX_ID = new Long("99999999999");
 
     private String name;
     private String lastName;

@@ -20,34 +20,4 @@ public class WorkerDAO {
         allWorkers.addAll(directors);
         return allWorkers;
     }
-
-    public void deleteAllWorkers() {
-        String query = "TRUNCATE TABLE employee";
-        try (Connection conn = ConnectionFactory.getInstance().getConnection();
-             PreparedStatement ptmt = conn.prepareStatement(query)) {
-            ptmt.executeUpdate();
-            conn.commit();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void deleteWorker(Long id) {
-        String query = "DELETE FROM employee WHERE id=?";
-        try (Connection conn = ConnectionFactory.getInstance().getConnection();
-             PreparedStatement ptmt = conn.prepareStatement(query)) {
-            ptmt.setLong(1, id);
-            ptmt.executeUpdate();
-            conn.commit();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    PreparedStatement createPreparedStatement(Connection con, Long id, String query) throws SQLException {
-        PreparedStatement ps = con.prepareStatement(query);
-        ps.setLong(1, id);
-        return ps;
-    }
-
 }

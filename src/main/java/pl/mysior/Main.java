@@ -9,15 +9,10 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            LoggingInterface logging = new LoggingImpl();
-            Naming.rebind("Elo", logging);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
             int i = 1;
             int port = 1234;
+            LoggingInterface logging = new LoggingInterfaceImpl(AuthType.LOCAL);
+            Naming.rebind("Elo", logging);
             ServerSocket s = new ServerSocket(port);
             System.out.println("Server started on " + port + " port.");
             System.out.println("Server is ready!");
@@ -29,8 +24,9 @@ public class Main {
                 t.start();
                 i++;
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("Fatal Error!");
         }
 
     }
