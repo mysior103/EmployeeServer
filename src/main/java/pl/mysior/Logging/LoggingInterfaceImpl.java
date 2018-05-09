@@ -1,7 +1,8 @@
-package pl.mysior;
+package pl.mysior.Logging;
 
 import pl.mysior.BuisnessObject.User;
 import pl.mysior.DAO.UserDAO;
+import pl.mysior.Main;
 
 import javax.naming.AuthenticationException;
 import javax.naming.Context;
@@ -10,26 +11,21 @@ import javax.naming.directory.DirContext;
 import javax.naming.directory.InitialDirContext;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.Base64;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.List;
+import java.util.*;
 
 public class LoggingInterfaceImpl extends UnicastRemoteObject implements LoggingInterface {
     protected LoggingInterfaceImpl() throws RemoteException {
     }
     private static int randInteger;
-    public static HashSet<String> authKeySet = new HashSet<>();
     private AuthType authType;
 
-    protected LoggingInterfaceImpl(AuthType authType) throws RemoteException{
+    public LoggingInterfaceImpl(AuthType authType) throws RemoteException{
         this.authType = authType;
     }
 
     @Override
     public String checkAccess(String userName, String password) throws RemoteException {
         String result = null;
-        boolean server = true;
         if (authType==AuthType.ZUT) {
             try {
                 String wipsadUsername = "wipsad\\" + userName;
@@ -64,7 +60,7 @@ public class LoggingInterfaceImpl extends UnicastRemoteObject implements Logging
         String preparedToEncoded = username + randInteger;
         byte[] encodedBytes = Base64.getEncoder().encode(preparedToEncoded.getBytes());
         String generatedKey = new String(encodedBytes);
-        authKeySet.add(generatedKey);
+        Main.synchronizedAuthKeySet.add(generatedKey);
         System.out.println("Created new Auth Key : " + generatedKey);
         return generatedKey;
     }
@@ -78,7 +74,4 @@ public class LoggingInterfaceImpl extends UnicastRemoteObject implements Logging
         UserDAO userDAO = new UserDAO();
         return userDAO.getAllUsers();
     }
-}
-enum AuthType{
-    ZUT,LOCAL
 }

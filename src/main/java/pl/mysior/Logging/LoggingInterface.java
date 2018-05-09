@@ -1,4 +1,4 @@
-package pl.mysior;
+package pl.mysior.Logging;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
