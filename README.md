@@ -1,6 +1,6 @@
 # Employee Server
 
-[![Build Status](http://circleci-badges-max.herokuapp.com/img/mysior103/EmployeeServer?token=)](https://circleci.com/gh/mysior103/EmployeeServer)
+[![Build Status](https://circleci.com/gh/mysior103/EmployeeServer.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/mysior103/EmployeeServer)
 This is server for Employee application. This is a program for Advanced Programming in Java for my University.
 ***
 ## Prerequisites
