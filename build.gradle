@@ -2,6 +2,7 @@ group 'pl.mysior'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'jacoco'
 
 sourceCompatibility = 1.8
 
@@ -14,6 +15,12 @@ dependencies {
     compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
     compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
     compileOnly 'org.projectlombok:lombok:1.16.20'
-
-
+    compile group: 'org.jacoco', name: 'jacoco-maven-plugin', version: '0.7.9'
 }
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
+}
+
