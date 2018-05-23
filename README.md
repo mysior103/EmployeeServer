@@ -37,7 +37,7 @@ In MySQL server create schema:
 Create employee table in Database:
 ```
 CREATE TABLE `employee`.`employee` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` LONG NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `lastName` VARCHAR(45) NOT NULL,
   `position` VARCHAR(45) NOT NULL,
